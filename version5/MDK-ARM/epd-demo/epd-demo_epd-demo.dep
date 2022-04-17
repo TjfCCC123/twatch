@@ -1,7 +1,7 @@
 Dependencies for Project 'epd-demo', Target 'epd-demo': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (startup_stm32f103xe.s)(0x60F4E2A2)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xe.lst --xref -o epd-demo\startup_stm32f103xe.o --depend epd-demo\startup_stm32f103xe.d)
-F (../Src/main.c)(0x625AC540)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Config -I ..\User\e-Paper -I ..\User\Fonts -I ..\User\GUI -I ..\User\Examples-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o epd-demo\main.o --omf_browse epd-demo\main.crf --depend epd-demo\main.d)
+F (../Src/main.c)(0x625C26AD)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Config -I ..\User\e-Paper -I ..\User\Fonts -I ..\User\GUI -I ..\User\Examples-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o epd-demo\main.o --omf_browse epd-demo\main.crf --depend epd-demo\main.d)
 I (../Inc/main.h)(0x60AF72A2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F9BB385)
 I (../Inc/stm32f1xx_hal_conf.h)(0x60AF7088)
@@ -33,7 +33,7 @@ I (G:\KEIL5\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (../Inc/spi.h)(0x60AF7088)
 I (../Inc/usart.h)(0x60AF7088)
 I (../Inc/gpio.h)(0x60AF7087)
-I (..\User\Examples\EPD_Test.h)(0x625ACA1D)
+I (..\User\Examples\EPD_Test.h)(0x625C23C7)
 I (..\User\Config\DEV_Config.h)(0x60AF729D)
 I (..\User\GUI\GUI_Paint.h)(0x625ABF68)
 I (..\User\GUI\../Fonts/fonts.h)(0x625973B5)
@@ -191,8 +191,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F9BB385)
 I (G:\KEIL5\ARM\ARMCC\include\stdio.h)(0x60252374)
 F (..\User\Examples\ImageData.c)(0x61BC2B08)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Config -I ..\User\e-Paper -I ..\User\Fonts -I ..\User\GUI -I ..\User\Examples-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o epd-demo\imagedata.o --omf_browse epd-demo\imagedata.crf --depend epd-demo\imagedata.d)
 I (..\User\Examples\ImageData.h)(0x61BC2B2C)
-F (..\User\Examples\EPD_1in54_V2_test.c)(0x625AC438)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Config -I ..\User\e-Paper -I ..\User\Fonts -I ..\User\GUI -I ..\User\Examples-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o epd-demo\epd_1in54_v2_test.o --omf_browse epd-demo\epd_1in54_v2_test.crf --depend epd-demo\epd_1in54_v2_test.d)
-I (..\User\Examples\EPD_Test.h)(0x625ACA1D)
+F (..\User\Examples\EPD_1in54_V2_test.c)(0x625C2409)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Config -I ..\User\e-Paper -I ..\User\Fonts -I ..\User\GUI -I ..\User\Examples-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o epd-demo\epd_1in54_v2_test.o --omf_browse epd-demo\epd_1in54_v2_test.crf --depend epd-demo\epd_1in54_v2_test.d)
+I (..\User\Examples\EPD_Test.h)(0x625C23C7)
 I (..\User\Config\DEV_Config.h)(0x60AF729D)
 I (../Inc/main.h)(0x60AF72A2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F9BB385)
@@ -227,9 +227,9 @@ I (..\User\GUI\../Fonts/fonts.h)(0x625973B5)
 I (..\User\Examples\imagedata.h)(0x61BC2B2C)
 I (..\User\Config\Debug.h)(0x5BEFB7E6)
 I (G:\KEIL5\ARM\ARMCC\include\stdlib.h)(0x60252374)
-I (..\User\e-Paper\EPD_1in54_V2.h)(0x60F4F160)
+I (..\User\e-Paper\EPD_1in54_V2.h)(0x625C1DC8)
 F (..\User\e-Paper\EPD_1in54_V2.c)(0x611373AA)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Config -I ..\User\e-Paper -I ..\User\Fonts -I ..\User\GUI -I ..\User\Examples-I.\RTE\_epd-demo-IG:\KEIL5\pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IG:\KEIL5\pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o epd-demo\epd_1in54_v2.o --omf_browse epd-demo\epd_1in54_v2.crf --depend epd-demo\epd_1in54_v2.d)
-I (..\User\e-Paper\EPD_1in54_V2.h)(0x60F4F160)
+I (..\User\e-Paper\EPD_1in54_V2.h)(0x625C1DC8)
 I (..\User\Config\DEV_Config.h)(0x60AF729D)
 I (../Inc/main.h)(0x60AF72A2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F9BB385)

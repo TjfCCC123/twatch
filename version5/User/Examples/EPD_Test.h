@@ -37,5 +37,7 @@
 #include <stdlib.h> // malloc() free()
 
 int EPD_1in54_V2_test(void);
+int ScreenInit();//2022
+void Debug_test(const char *string);//2022
 
 #endif

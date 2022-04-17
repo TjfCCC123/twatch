@@ -160,3 +160,38 @@ int EPD_1in54_V2_test(void)
     return 0;
 }
 
+int ScreenInit()
+{
+	DEV_Module_Init();
+  EPD_1IN54_V2_Init();
+  EPD_1IN54_V2_Clear();
+  DEV_Delay_ms(500);
+}
+
+void Debug_test(const char *string)
+{
+  DEV_Module_Init();
+  EPD_1IN54_V2_Init();
+  EPD_1IN54_V2_Clear();
+  DEV_Delay_ms(500);
+	
+  UBYTE *BlackImage;
+	
+  UWORD Imagesize = ((EPD_1IN54_V2_WIDTH % 8 == 0)? (EPD_1IN54_V2_WIDTH / 8 ): (EPD_1IN54_V2_WIDTH / 8 + 1)) * EPD_1IN54_V2_HEIGHT;
+  if((BlackImage = (UBYTE *)malloc(Imagesize)) == NULL) {
+		printf("Failed to apply for black memory...\r\n");
+  }
+  printf("Paint_NewImage\r\n");
+  Paint_NewImage(BlackImage, EPD_1IN54_V2_WIDTH, EPD_1IN54_V2_HEIGHT, 270, WHITE);
+	
+	EPD_1IN54_V2_DisplayPartBaseImage(BlackImage);
+  // enter partial mode
+	EPD_1IN54_V2_Init_Partial();
+  printf("Partial refresh\r\n");
+  Paint_SelectImage(BlackImage);
+	Paint_ClearWindows(0, 0, 200, 200, WHITE);
+	Paint_DrawString_EN(45, 0, "T-WATCH",&Font24, WHITE, BLACK);
+	EPD_1IN54_V2_DisplayPart(BlackImage);
+  DEV_Delay_ms(300);//Analog clock 1s
+}
+

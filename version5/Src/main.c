@@ -24,146 +24,68 @@
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 #include "EPD_Test.h"
 
-/* USER CODE END Includes */
 
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-/* USER CODE BEGIN PFP */
-/* Private function prototypes -----------------------------------------------*/
 
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
   * @retval int
   */
+	
+	
+	
+GPIO_PinState jieguo = 0;
+
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
   /* Configure the system clock */
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_SPI1_Init();
-  /* USER CODE BEGIN 2 */
-		
-		//EPD_1in02d_test();
-		
-//		EPD_1in54_test();
-		EPD_1in54_V2_test();		
-//		EPD_1in54b_test();		
-//		EPD_1in54b_V2_test();
-//		EPD_1in54c_test();
-
-//		EPD_2in7_test();
-//		EPD_2in7b_test();
-//		EPD_2in7b_V2_test();
-
-//		EPD_2in9_test();
-//		EPD_2in9_V2_test();
-//		EPD_2in9bc_test();
-//		EPD_2in9b_V3_test();
-//		EPD_2in9d_test();
-
-//		EPD_2in13_test();
-//		EPD_2in13_V2_test();
-// 		EPD_2in13_V3_test();
-//		EPD_2in13bc_test();
-//		EPD_2in13b_V3_test();
-//		EPD_2in13d_test();
 	
-//		EPD_2in66_test();
-//		EPD_2in66b_test();
-		
-//		EPD_3in7_test();
+	//EPD_1in54_V2_test();	
 	
-//		EPD_4in01f_test();	
-		
-//		EPD_4in2_test();
-//		EPD_4in2bc_test();
-//		EPD_4in2b_V2_test();
-//		EPD_5in65f_test();
+	//set external interrupt
+	//Debug_test("123");
+	GPIO_InitTypeDef test;
+	test.Mode = GPIO_MODE_INPUT;
+	test.Pin = 0;
+	test.Pull = GPIO_NOPULL;
+	test.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOD, &test);
 	
-//		EPD_5in83_test();
-//		EPD_5in83_V2_test();
-//		EPD_5in83bc_test();
-//		EPD_5in83b_V2_test();
-
-//		EPD_7in5_test();
-//		EPD_7in5_V2_test();
-//		EPD_7in5bc_test();
-//		EPD_7in5b_V2_test();
-
-//		EPD_7in5_HD_test();
-//		EPD_7in5b_HD_test();
-
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
+	HAL_NVIC_SetPriority(EXTI0_IRQn, 0U, 0U);
+	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+	
+	
+	HAL_GPIO_EXTI_IRQHandler(0);
+	//Debug_test("123");
   /* USER CODE BEGIN WHILE */
-    while (1) {
-
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-			HAL_Delay(10000);
-
+  while (1) {
+		HAL_Delay(10000);
     }
-  /* USER CODE END 3 */
 }
 
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	jieguo = HAL_GPIO_ReadPin(GPIOD,0);//read gpio
+	if(GPIO_Pin == 0)
+	{
+		Debug_test("123");
+	}
+}
+	
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -198,14 +120,6 @@ void SystemClock_Config(void)
   }
 }
 
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
-
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -233,4 +147,3 @@ void assert_failed(uint8_t *file, uint32_t line)
 }
 #endif /* USE_FULL_ASSERT */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
