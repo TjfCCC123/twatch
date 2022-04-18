@@ -58,20 +58,20 @@ int main(void)
 	
 	//set external interrupt
 	//Debug_test("123");
+	__HAL_RCC_GPIOD_CLK_ENABLE();
 	GPIO_InitTypeDef test;
-	test.Mode = GPIO_MODE_INPUT;
-	test.Pin = 0;
-	test.Pull = GPIO_NOPULL;
+	test.Mode = GPIO_MODE_IT_RISING_FALLING;
+	test.Pin = GPIO_PIN_0;
+	test.Pull = GPIO_PULLDOWN;
 	test.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOD, &test);
 	
-	HAL_NVIC_SetPriority(EXTI0_IRQn, 0U, 0U);
+	
+	HAL_NVIC_SetPriority(EXTI0_IRQn, 2U, 0U);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 	
 	
-	HAL_GPIO_EXTI_IRQHandler(0);
 	//Debug_test("123");
-  /* USER CODE BEGIN WHILE */
   while (1) {
 		HAL_Delay(10000);
     }
@@ -79,6 +79,7 @@ int main(void)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+	Debug_test("123");
 	jieguo = HAL_GPIO_ReadPin(GPIOD,0);//read gpio
 	if(GPIO_Pin == 0)
 	{

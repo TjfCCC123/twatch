@@ -57,7 +57,7 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 /* USER CODE BEGIN EFP */
-
+void EXTI0_IRQHandler(void);//2022  EXTI0_IRQHandler
 /* USER CODE END EFP */
 
 #ifdef __cplusplus
