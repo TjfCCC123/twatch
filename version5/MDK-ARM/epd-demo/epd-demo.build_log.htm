@@ -27,10 +27,24 @@ Project File Date:  04/16/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'G:\KEIL5\ARM\ARMCC\Bin'
 Build target 'epd-demo'
+compiling EPD_1in54_V2_test.c...
+..\User\Examples\EPD_Test.h(40): warning:  #1295-D: Deprecated declaration ScreenInit - give arg types
+  int ScreenInit();//2022
+..\User\Examples\EPD_Test.h(42): warning:  #1295-D: Deprecated declaration function_select_interface - give arg types
+  int function_select_interface();	//
+..\User\Examples\EPD_Test.h(43): warning:  #1295-D: Deprecated declaration white_washed - give arg types
+  int white_washed();	//
+..\User\Examples\EPD_1in54_V2_test.c(122): warning:  #111-D: statement is unreachable
+  	return 0;
+..\User\Examples\EPD_1in54_V2_test.c(131): warning:  #940-D: missing return statement at end of non-void function "ScreenInit" 
+  }
+..\User\Examples\EPD_1in54_V2_test.c(221): warning:  #940-D: missing return statement at end of non-void function "function_select_interface" 
+  }
+..\User\Examples\EPD_1in54_V2_test.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=25188 RO-data=14348 RW-data=364 ZI-data=41140  
+Program Size: Code=25932 RO-data=55488 RW-data=376 ZI-data=41136  
 FromELF: creating hex file...
-"epd-demo\epd-demo.axf" - 0 Error(s), 0 Warning(s).
+"epd-demo\epd-demo.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,7 +67,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.5.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

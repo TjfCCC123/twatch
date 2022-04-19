@@ -91,29 +91,32 @@ parameter:
 ******************************************************************************/
 void Paint_NewImage(UBYTE *image, UWORD Width, UWORD Height, UWORD Rotate, UWORD Color)
 {
-    Paint.Image = NULL;
-    Paint.Image = image;
+  Paint.Image = NULL;
+  Paint.Image = image;
 
-    Paint.WidthMemory = Width;
-    Paint.HeightMemory = Height;
-    Paint.Color = Color;    
+  Paint.WidthMemory = Width;
+  Paint.HeightMemory = Height;
+  Paint.Color = Color;    
 	Paint.Scale = 2;
 		
-    Paint.WidthByte = (Width % 8 == 0)? (Width / 8 ): (Width / 8 + 1);
-    Paint.HeightByte = Height;    
-//    printf("WidthByte = %d, HeightByte = %d\r\n", Paint.WidthByte, Paint.HeightByte);
-//    printf(" EPD_WIDTH / 8 = %d\r\n",  122 / 8);
+  Paint.WidthByte = (Width % 8 == 0)? (Width / 8 ): (Width / 8 + 1);
+  Paint.HeightByte = Height;    
+//printf("WidthByte = %d, HeightByte = %d\r\n", Paint.WidthByte, Paint.HeightByte);
+//printf(" EPD_WIDTH / 8 = %d\r\n",  122 / 8);
    
-    Paint.Rotate = Rotate;
-    Paint.Mirror = MIRROR_NONE;
-    
-    if(Rotate == ROTATE_0 || Rotate == ROTATE_180) {
-        Paint.Width = Width;
-        Paint.Height = Height;
-    } else {
-        Paint.Width = Height;
-        Paint.Height = Width;
-    }
+  Paint.Rotate = Rotate;
+  Paint.Mirror = MIRROR_NONE;
+ 
+  if(Rotate == ROTATE_0 || Rotate == ROTATE_180) 
+	{
+		Paint.Width = Width;
+		Paint.Height = Height;
+  } 
+	else 
+	{
+		Paint.Width = Height;
+		Paint.Height = Width;
+  }
 }
 
 /******************************************************************************

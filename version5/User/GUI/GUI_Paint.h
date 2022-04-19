@@ -174,7 +174,9 @@ typedef struct {
     UBYTE  Hour;  //0 - 23
     UBYTE  Min;   //0 - 59
     UBYTE  Sec;   //0 - 59
+		const char *week[7];	//SUN MON TUE WED THU FRI SAT 
 } PAINT_TIME;
+
 extern PAINT_TIME sPaint_time;
 
 //init and Clear

@@ -1,89 +1,121 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
+/*
+* | File      	:   main.h
+* | Author      :   TJF
+* | Function    :	  STM32F103ZET6 TWATCH
+*/
 #include "main.h"
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
-
-/* Private includes ----------------------------------------------------------*/
 #include "EPD_Test.h"
 
-
-
-/* Private function prototypes -----------------------------------------------*/
-void SystemClock_Config(void);
-
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
-	
-	
-	
 GPIO_PinState jieguo = 0;
-
+void SystemClock_Config(void);
+extern int testFlag;
 int main(void)
 {
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* Configure the system clock */
+  //Configure the system clock
   SystemClock_Config();
-
-  /* Initialize all configured peripherals */
+	//origin time
+	PAINT_TIME paintTime;
+	paintTime.Year = 2022;
+	paintTime.Month = 4;
+	paintTime.Day = 19;
+	paintTime.Hour = 12;
+	paintTime.Min = 34;
+	paintTime.Sec = 56;
+	paintTime.week[0] = "SUN";
+	paintTime.week[1] = "MON";
+	paintTime.week[2] = "TUE";
+	paintTime.week[3] = "WED";
+	paintTime.week[4] = "THU";
+	paintTime.week[5] = "FRI";
+	paintTime.week[6] = "SAT";
+	testFlag = 0;
+  //Initialize all configured peripherals
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_SPI1_Init();
 	
-	//EPD_1in54_V2_test();	
-	
-	//set external interrupt
-	//Debug_test("123");
+	//set external interrupt BEGIN
 	__HAL_RCC_GPIOD_CLK_ENABLE();
+	
+	//PD0 left_up back/function
 	GPIO_InitTypeDef test;
-	test.Mode = GPIO_MODE_IT_RISING_FALLING;
+	test.Mode = GPIO_MODE_IT_RISING;
 	test.Pin = GPIO_PIN_0;
 	test.Pull = GPIO_PULLDOWN;
 	test.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOD, &test);
-	
-	
 	HAL_NVIC_SetPriority(EXTI0_IRQn, 2U, 0U);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 	
+	//PD1 left_down comfirm
+	GPIO_InitTypeDef test1;
+	test1.Mode = GPIO_MODE_IT_RISING;
+	test1.Pin = GPIO_PIN_1;
+	test1.Pull = GPIO_PULLDOWN;
+	test1.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOD, &test1);
+	HAL_NVIC_SetPriority(EXTI1_IRQn, 2U, 0U);
+	HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+	//PD3 right_up up
+	GPIO_InitTypeDef test3;
+	test3.Mode = GPIO_MODE_IT_RISING;
+	test3.Pin = GPIO_PIN_3;
+	test3.Pull = GPIO_PULLDOWN;
+	test3.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOD, &test3);
+	HAL_NVIC_SetPriority(EXTI3_IRQn, 2U, 0U);
+	HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 	
-	//Debug_test("123");
+	//PD4 right_down down
+	GPIO_InitTypeDef test4;
+	test4.Mode = GPIO_MODE_IT_RISING;
+	test4.Pin = GPIO_PIN_4;
+	test4.Pull = GPIO_PULLDOWN;
+	test4.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOD, &test4);
+	HAL_NVIC_SetPriority(EXTI4_IRQn, 2U, 0U);
+	HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+	//set external interrupt END
+	
+	main_interface(paintTime);
+	
   while (1) {
-		HAL_Delay(10000);
+		HAL_Delay(1000);
     }
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	Debug_test("123");
-	jieguo = HAL_GPIO_ReadPin(GPIOD,0);//read gpio
-	if(GPIO_Pin == 0)
+	testFlag = 1;
+	//Debug_test("CALLBACK");
+	switch (GPIO_Pin)
 	{
-		Debug_test("123");
+		case GPIO_PIN_0:
+			function_select_interface();
+			__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+			break;
+		case GPIO_PIN_1:
+			Debug_test("PD1");
+			__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+			break;
+		case GPIO_PIN_3:
+			white_washed();
+			__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+			break;
+		case GPIO_PIN_4:
+			Debug_test("PD4");
+			__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+			break;
+		default:
+			Debug_test("default");
+			__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+			break;
 	}
 }
 	

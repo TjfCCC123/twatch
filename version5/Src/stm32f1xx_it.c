@@ -197,10 +197,28 @@ void SysTick_Handler(void)
 /* please refer to the startup file (startup_stm32f1xx.s).                    */
 /******************************************************************************/
 
-/* USER CODE BEGIN 1 */
 void EXTI0_IRQHandler(void)  //EXTI0_IRQHandler
 {
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);//2022
 }
-/* USER CODE END 1 */
+
+void EXTI1_IRQHandler(void)  
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);//2022
+}
+
+void EXTI2_IRQHandler(void)  
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);//2022
+}
+
+void EXTI3_IRQHandler(void)  
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);//2022
+}
+
+void EXTI4_IRQHandler(void)
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);//2022
+}
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

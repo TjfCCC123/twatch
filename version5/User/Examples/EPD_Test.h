@@ -36,8 +36,11 @@
 #include "Debug.h"
 #include <stdlib.h> // malloc() free()
 
-int EPD_1in54_V2_test(void);
+int main_interface(PAINT_TIME paintTime);
 int ScreenInit();//2022
 void Debug_test(const char *string);//2022
+int function_select_interface();	//
+int white_washed();	//
+
 
 #endif

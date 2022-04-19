@@ -45,7 +45,7 @@ example 2:
         // EPD_2in9bc_test();
     changed to:
         EPD_2in9bc_test();
-Note: For EPD_1in54_V2_test() and EPD_2in13_V2_test(), please note that the V2 logo is attached to the back of your screen.
+Note: For main_interface() and EPD_2in13_V2_test(), please note that the V2 logo is attached to the back of your screen.
 
 4. Directory structure (selection):
 If you use our products frequently, we will be very familiar with our program directory structure. We have a copy of the specific function.

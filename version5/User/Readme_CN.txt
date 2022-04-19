@@ -44,7 +44,7 @@ BUSY   ->    PA3
         //		EPD_2in9bc_test();
     修改成：
         EPD_2in9bc_test();
-注意：对于EPD_1in54_V2_test()和EPD_2in13_V2_test()请注意你的屏幕背面是否贴有V2标识。
+注意：对于main_interface()和EPD_2in13_V2_test()请注意你的屏幕背面是否贴有V2标识。
 
 4.目录结构（选读）：
 如果你经常使用我们的产品，对我们的程序目录结构会十分熟悉，关于具体的函数的我们有一份
